@@ -20,35 +20,24 @@ const prisma = new PrismaClient({
   },
 });
 async function main() {
+  await prisma.$connect();
   const user = await prisma.user.findMany();
   console.log(user);
-
-  const newUser = await prisma.user.create({
-    data: {
-      name: "Ujjwal",
-      email: "ujjwal@example.com",
-      password: "123456",
-    },
-  });
-
-  console.log("User created:", newUser);
-  const message = await prisma.chat.create({
-    data: {
-      message: "Hello, this is my first message!",
-      userId: newUser.id,
-    },
-  });
-
-  console.log("Message created:", message);
 }
 main()
-  .then(() => prisma.$disconnect())
+  .then(() => console.log("Primsa connected"))
   .catch((e) => {
-    console.error(e);
+    console.error("prisma connection failed>>", e);
     prisma.$disconnect();
   });
 
-app.use("/auth", authRoutes);
+app.use(
+  "/auth",
+  () => {
+    console.log("hello");
+  },
+  authRoutes,
+);
 
 app.listen(5000, () => {
   console.log("server running on https://localhost:5000");
