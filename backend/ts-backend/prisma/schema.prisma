@@ -9,17 +9,19 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String?
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   chats     Chat[]
 }
 
 model Chat {
   id        Int      @id @default(autoincrement())
-  userId    Int
+  userId    String
   message   String
   response  String?
   createdAt DateTime @default(now())

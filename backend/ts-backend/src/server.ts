@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
-import authRoutes from "./routes/authRoutes";
+// import authRoutes from "./routes/authRoutes";
 import { PrismaClient } from "@prisma/client";
 
 dotenv.config();
@@ -12,33 +12,20 @@ app.use(cors());
 
 app.use(express.json());
 
-const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: process.env.DATABASE_URL,
-    },
-  },
+app.use("/auth", () => {
+  console.log("hello");
 });
-async function main() {
-  await prisma.$connect();
-  const user = await prisma.user.findMany();
-  console.log(user);
-}
-main()
-  .then(() => console.log("Primsa connected"))
-  .catch((e) => {
-    console.error("prisma connection failed>>", e);
-    prisma.$disconnect();
-  });
 
-app.use(
-  "/auth",
-  () => {
-    console.log("hello");
-  },
-  authRoutes,
-);
-
+app.get("/health", (_, res) => {
+  res.json({ status: "ok" });
+});
 app.listen(5000, () => {
   console.log("server running on https://localhost:5000");
 });
+export const prisma = new PrismaClient();
+prisma
+  .$connect()
+  .then(() => console.log("✅ Prisma connected successfully"))
+  .catch((e) => {
+    console.error("❌ Prisma connection failed:", e.message);
+  });
