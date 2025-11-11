@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
 import { PrismaClient } from "@prisma/client";
-
+import chatRoutes from "./routes/chatroutes";
 dotenv.config();
 
 export const prisma = new PrismaClient();
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRoutes);
-
+app.use("/chat", chatRoutes);
 app.get("/health", (_, res) => {
   res.json({ status: "ok" });
 });
