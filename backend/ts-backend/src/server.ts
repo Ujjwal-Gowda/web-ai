@@ -9,12 +9,11 @@ dotenv.config();
 export const prisma = new PrismaClient();
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRoutes);
-app.use("/chat", chatRoutes);
+app.use("/ai", chatRoutes);
 
 app.get("/health", async (_, res) => {
   try {
@@ -35,16 +34,13 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
-prisma
-  .$connect()
-  .then(() => {
-    console.log("✅ Prisma connected successfully");
-  })
-  .catch((e) => {
-    console.error("❌ Prisma connection failed:", e.message);
-    console.log("⚠️  Server is running but database operations will fail");
-  });
-
+//     console.log("✅ Prisma connected successfully");
+//   })
+//   .catch((e) => {
+//     console.error("❌ Prisma connection failed:", e.message);
+//     console.log("⚠️  Server is running but database operations will fail");
+//   });
+//
 // Graceful shutdown
 process.on("SIGINT", async () => {
   console.log("Shutting down gracefully...");
