@@ -3,8 +3,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "../server";
 const router = express.Router();
-
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+import dotenv from "dotenv";
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
