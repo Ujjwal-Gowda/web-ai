@@ -19,6 +19,8 @@ export const removeBackground = async (req: Request, res: Response) => {
       contentType: file.mimetype,
     });
 
+    console.log(formData);
+    console.log("header", formData.getHeaders());
     const response = await fetch(
       "http://localhost:8000/rmbg/remove-bg-base64",
       {

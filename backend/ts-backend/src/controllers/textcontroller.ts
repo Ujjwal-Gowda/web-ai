@@ -18,8 +18,9 @@ export const speechToText = async (req: Request, res: Response) => {
       filename: file.originalname,
       contentType: file.mimetype,
     });
-
-    const response = await fetch("http://localhost:8000/wisper/text", {
+    console.log(formData);
+    console.log("header", formData.getHeaders());
+    const response = await fetch("http://localhost:8000/whisper/text", {
       method: "POST",
       body: formData,
       headers: formData.getHeaders(),

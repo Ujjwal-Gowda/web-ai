@@ -3,7 +3,7 @@ import whisper
 import os
 
 router = APIRouter()
-model = whisper.load_model("tiny")
+model = whisper.load_model("medium")
 
 
 @router.post("/text")
