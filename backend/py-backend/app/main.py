@@ -10,7 +10,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5000",
-        "http://localhost:3000",
+        "*",
     ],  # replace with your frontend/backend origins in prod
     allow_credentials=True,
     allow_methods=["*"],
