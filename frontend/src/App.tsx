@@ -39,7 +39,7 @@ function App() {
     language: string;
   } | null>(null);
   const [audioLoading, setAudioLoading] = useState(false);
-  const URL = "";
+  const URL = "https://web-ai-395a.onrender.com";
   let API_URL = "";
   if (!URL) {
     API_URL = "http://localhost:5000";
