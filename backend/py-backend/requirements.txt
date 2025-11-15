@@ -31,7 +31,8 @@ urllib3==2.5.0
 uvicorn==0.38.0
 langchain
 rembg==2.0.67
-
+openai-whisper
+python-multipart
 onnxruntime>=1.19.0,<1.21.0
 langchain-openai==0.2.0
 python-dotenv==1.0.0
