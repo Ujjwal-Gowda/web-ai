@@ -31,17 +31,17 @@ app.get("/health", async (_, res) => {
 const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 prisma
   .$connect()
   .then(() => {
-    console.log("✅ Prisma connected successfully");
+    console.log("Prisma connected successfully");
   })
   .catch((e) => {
-    console.error("❌ Prisma connection failed:", e.message);
-    console.log("⚠️  Server is running but database operations will fail");
+    console.error("Prisma connection failed:", e.message);
+    console.log(" Server is running but database operations will fail");
   });
 
 // Graceful shutdown
