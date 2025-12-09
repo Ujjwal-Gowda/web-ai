@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.chat_routes import router as chat_router
 from app.routes.rmbg_routes import router as rmbg_router
-from app.routes.whisper_routes import router as whisper_router
+
+# from app.routes.whisper_routes import router as whisper_router
 
 app = FastAPI(title="Model API")
 
