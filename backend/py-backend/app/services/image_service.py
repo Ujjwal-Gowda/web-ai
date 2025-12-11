@@ -1,16 +1,15 @@
-from rembg import remove
+from rembg import remove .new_session
 from PIL import Image
 import io
 import os
 from pathlib import Path
 
-
+session = new_session(model_name="u2netp")
 def remove_background(file):
     try:
         contents = file.file.read()
         input_image = Image.open(io.BytesIO(contents))
-
-        output_image = remove(input_image)
+        output_image = remove(input_image, session=session)
 
         output_dir = Path("processed")
         output_dir.mkdir(exist_ok=True)
