@@ -1,10 +1,12 @@
-from rembg import remove .new_session
+from rembg import remove, new_session
 from PIL import Image
 import io
 import os
 from pathlib import Path
 
 session = new_session(model_name="u2netp")
+
+
 def remove_background(file):
     try:
         contents = file.file.read()
